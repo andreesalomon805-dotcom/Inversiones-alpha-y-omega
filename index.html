@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INVERSIONES ALPHA Y OMEGA — Catálogo 2025–2026</title>
+<title>INVERSIONES ALPHA Y OMEGA — Catálogo Tecnológico 2025–2026</title>
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <!-- SEO & Open Graph -->
 <meta name="description" content="Inversiones Alpha & Omega — Distribuidor líder de tecnología en Honduras. Hikvision, Cisco, Dell, HP, Apple, Huawei y 54+ marcas. Soluciones integrales llave en mano con más de 28 años de experiencia.">
@@ -860,7 +859,31 @@
     .s-ring-4{width:170px;height:170px;margin:-85px 0 0 -85px}
     .brand-grid{grid-template-columns:1fr}
     .footer-top{flex-direction:column}.footer-links{flex-direction:column;gap:30px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}
+    .clients-section{padding:80px 30px}
+    .clients-marquee-track{gap:30px}
+    .client-logo-card{min-width:130px;max-width:130px;height:80px}
   }
+
+  /* ── CLIENTES ── */
+  .clients-section{padding:120px 60px;position:relative;background:var(--black);overflow:hidden}
+  .clients-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,106,0,.25),transparent)}
+  .clients-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,106,0,.12),transparent)}
+  .clients-header{text-align:center;margin-bottom:70px}
+  .clients-header .section-title{margin:0 auto}
+  .clients-header .section-desc{margin:12px auto 0;max-width:560px}
+  .clients-marquee-wrap{overflow:hidden;position:relative}
+  .clients-marquee-wrap::before,.clients-marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:180px;z-index:2;pointer-events:none}
+  .clients-marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--black),transparent)}
+  .clients-marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--black),transparent)}
+  .clients-marquee-track{display:flex;align-items:center;gap:40px;width:max-content;animation:clientsScroll 40s linear infinite}
+  .clients-marquee-track:hover{animation-play-state:paused}
+  @keyframes clientsScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .client-logo-card{flex-shrink:0;min-width:160px;max-width:160px;height:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,106,0,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;padding:14px;transition:all .35s ease;backdrop-filter:blur(4px);overflow:hidden;position:relative}
+  .client-logo-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,106,0,.04),transparent);opacity:0;transition:opacity .35s}
+  .client-logo-card:hover{border-color:rgba(255,106,0,.45);transform:translateY(-4px);box-shadow:0 8px 30px rgba(255,106,0,.15)}
+  .client-logo-card:hover::before{opacity:1}
+  .client-logo-card img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:grayscale(20%) brightness(1.05);transition:filter .35s}
+  .client-logo-card:hover img{filter:grayscale(0%) brightness(1.1)}
 </style>
 </head>
 <body>
@@ -3515,6 +3538,54 @@
 
 <div class="glow-divider"></div>
 
+<!-- ═══ ALGUNOS DE NUESTROS CLIENTES ═══ -->
+<section class="clients-section" id="clientes">
+  <div class="clients-header">
+    <div class="section-label reveal" style="justify-content:center">Confianza &amp; Trayectoria</div>
+    <h2 class="section-title reveal reveal-delay-1">Algunos de Nuestros <span style="color:var(--orange)">Clientes</span></h2>
+    <p class="section-desc reveal reveal-delay-2">Empresas e instituciones líderes que han confiado en nuestras soluciones tecnológicas a lo largo de más de 28 años de presencia en el mercado centroamericano.</p>
+  </div>
+  <div class="clients-marquee-wrap">
+    <div class="clients-marquee-track" id="clientsTrack">
+      <!-- Set 1 -->
+      <div class="client-logo-card"><img src="clientes/zamorano.png" alt="Zamorano" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/corporacion-flores.png" alt="Corporación Flores" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/unilever.png" alt="Unilever" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/unicomer.png" alt="Unicomer" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/banco-central.png" alt="Banco Central de Honduras" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/ministerio-publico.png" alt="Ministerio Público" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/unitec.png" alt="UNITEC" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/gtz.png" alt="GTZ" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/grupo-as.png" alt="Grupo AS" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/poder-judicial.png" alt="Poder Judicial de Honduras" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/dowal-school.png" alt="Dowal School" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/secretaria-dsocial.png" alt="Secretaría de Desarrollo e Inclusión Social" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/dnvt.png" alt="DNVT" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/secretaria-seguridad.png" alt="Secretaría de Seguridad" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/amhon.png" alt="AMHON" loading="lazy"></div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="client-logo-card"><img src="clientes/zamorano.png" alt="Zamorano" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/corporacion-flores.png" alt="Corporación Flores" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/unilever.png" alt="Unilever" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/unicomer.png" alt="Unicomer" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/banco-central.png" alt="Banco Central de Honduras" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/ministerio-publico.png" alt="Ministerio Público" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/unitec.png" alt="UNITEC" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/gtz.png" alt="GTZ" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/grupo-as.png" alt="Grupo AS" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/poder-judicial.png" alt="Poder Judicial de Honduras" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/dowal-school.png" alt="Dowal School" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/secretaria-dsocial.png" alt="Secretaría de Desarrollo e Inclusión Social" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/dnvt.png" alt="DNVT" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/secretaria-seguridad.png" alt="Secretaría de Seguridad" loading="lazy"></div>
+      <div class="client-logo-card"><img src="clientes/amhon.png" alt="AMHON" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+
 <!-- ═══ GARANTÍA Y SOPORTE TÉCNICO ═══ -->
 <section class="services-section" id="servicios">
   <div style="text-align:center;max-width:700px;margin:0 auto 70px">
@@ -3618,7 +3689,7 @@
     <div class="footer-links">
       <div class="footer-col"><h4>Divisiones</h4><a href="#hikvision">Seguridad</a><a href="#redes-catalog">Redes</a><a href="#domotica">Domótica</a><a href="#telefonia-catalog">Telefonía IP</a><a href="#acceso">Control Acceso</a><a href="#iluminacion">Iluminación</a></div>
       <div class="footer-col"><h4>Marcas</h4><a href="#redes-catalog">UniFi / MikroTik</a><a href="#redes-catalog">TP-Link / Tenda</a><a href="#domotica">SONOFF</a><a href="#telefonia-catalog">Yealink</a><a href="#acceso">ZKTeco</a></div>
-      <div class="footer-col"><h4>Empresa</h4><a href="#nosotros">Sobre Nosotros</a><a href="#servicios">Soporte Técnico</a><a href="#servicios">Garantías</a><a href="#contacto">Contacto</a></div>
+      <div class="footer-col"><h4>Empresa</h4><a href="#nosotros">Sobre Nosotros</a><a href="#clientes">Nuestros Clientes</a><a href="#servicios">Soporte Técnico</a><a href="#servicios">Garantías</a><a href="#contacto">Contacto</a></div>
     </div>
   </div>
   <div class="footer-bottom">
