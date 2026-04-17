@@ -861,7 +861,7 @@
     .footer-top{flex-direction:column}.footer-links{flex-direction:column;gap:30px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}
     .clients-section{padding:80px 30px}
     .clients-marquee-track{gap:30px}
-    .client-logo-card{min-width:130px;max-width:130px;height:80px}
+    .client-logo-card{min-width:260px;max-width:260px;height:160px}
   }
 
   /* ── CLIENTES ── */
@@ -878,7 +878,7 @@
   .clients-marquee-track{display:flex;align-items:center;gap:40px;width:max-content;animation:clientsScroll 40s linear infinite}
   .clients-marquee-track:hover{animation-play-state:paused}
   @keyframes clientsScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  .client-logo-card{flex-shrink:0;min-width:160px;max-width:160px;height:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,106,0,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;padding:14px;transition:all .35s ease;backdrop-filter:blur(4px);overflow:hidden;position:relative}
+  .client-logo-card{flex-shrink:0;min-width:320px;max-width:320px;height:200px;background:rgba(255,255,255,.05);border:1px solid rgba(255,106,0,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;padding:14px;transition:all .35s ease;backdrop-filter:blur(4px);overflow:hidden;position:relative}
   .client-logo-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,106,0,.04),transparent);opacity:0;transition:opacity .35s}
   .client-logo-card:hover{border-color:rgba(255,106,0,.45);transform:translateY(-4px);box-shadow:0 8px 30px rgba(255,106,0,.15)}
   .client-logo-card:hover::before{opacity:1}
