@@ -895,6 +895,9 @@
     .brands-section,.about-section,.services-section,.clients-section{padding:80px 20px}
     /* Gradient fades no tan anchas en tablets */
     .clients-marquee-wrap::before,.clients-marquee-wrap::after{width:80px}
+    /* Grids de producto: 2 columnas iguales */
+    .hik-grid,.epson-grid,.dell-grid{grid-template-columns:repeat(2,1fr)}
+    .nc-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media(max-width:600px){
     /* Logos más pequeños en móvil */
@@ -911,6 +914,11 @@
     /* Secciones generales en pantallas muy pequeñas */
     .hikvision,.nextcity,.testimonials,.epson-section,.dell-section,
     .brands-section,.about-section,.services-section,.clients-section{padding:60px 16px}
+    /* Grids de producto: 2 columnas iguales en móvil */
+    .hik-grid,.epson-grid,.dell-grid{grid-template-columns:repeat(2,1fr)}
+    .nc-grid{grid-template-columns:repeat(2,1fr)}
+    /* Cards más compactas en pantallas pequeñas */
+    .hik-card-body,.epson-card-body,.dell-card-body,.nc-card-body{padding:10px 12px 14px}
   }
 
   /* ─── MOBILE NAV OVERLAY ─── */
