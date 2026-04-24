@@ -859,9 +859,7 @@
     .s-ring-4{width:170px;height:170px;margin:-85px 0 0 -85px}
     .brand-grid{grid-template-columns:1fr}
     .footer-top{flex-direction:column}.footer-links{flex-direction:column;gap:30px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}
-    .clients-section{padding:80px 30px}
-    .clients-marquee-track{gap:30px}
-    .client-logo-card{min-width:260px;max-width:260px;height:160px}
+    /* clients — overrides correctos están al final del <style> */
   }
 
   /* ── CLIENTES ── */
@@ -884,6 +882,31 @@
   .client-logo-card:hover::before{opacity:1}
   .client-logo-card img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;filter:grayscale(20%) brightness(1.05);transition:filter .35s}
   .client-logo-card:hover img{filter:grayscale(0%) brightness(1.1)}
+
+  /* ═══ MOBILE FIXES (class selectors needed to beat section-specific specificity) ═══ */
+  @media(max-width:900px){
+    /* Fix section paddings — must use class selector to override .section-class rules */
+    .hikvision,.nextcity,.testimonials,.epson-section,.dell-section,
+    .brands-section,.about-section,.services-section,.clients-section{padding:80px 20px}
+    /* Gradient fades no tan anchas en tablets */
+    .clients-marquee-wrap::before,.clients-marquee-wrap::after{width:80px}
+  }
+  @media(max-width:600px){
+    /* Logos más pequeños en móvil */
+    .client-logo-card{min-width:160px;max-width:160px;height:100px;padding:10px}
+    .clients-marquee-track{gap:16px}
+    .clients-marquee-wrap::before,.clients-marquee-wrap::after{width:40px}
+    .clients-section{padding:60px 15px}
+    /* Hero */
+    .hero-content{padding:0 16px}
+    /* Navbar */
+    nav{padding:12px 18px}
+    /* About-us section inline style override via attribute selector */
+    section[style*="padding"]{padding:80px 20px!important}
+    /* Secciones generales en pantallas muy pequeñas */
+    .hikvision,.nextcity,.testimonials,.epson-section,.dell-section,
+    .brands-section,.about-section,.services-section,.clients-section{padding:60px 16px}
+  }
 </style>
 </head>
 <body>
