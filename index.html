@@ -923,6 +923,7 @@
       align-items:center;justify-content:center;
       gap:4px;
       background:#030303;          /* sólido — sin alfa para que el video no traspase */
+      isolation:isolate;           /* nuevo contexto de apilamiento */
       z-index:9998;list-style:none;padding:0;margin:0;
       opacity:0;visibility:hidden;transform:translateY(-10px);
       transition:opacity .35s ease,transform .35s ease,visibility .35s ease;
@@ -3840,17 +3841,28 @@
   /* ─── HAMBURGER MENU ─── */
   const navToggle=document.getElementById('navToggle');
   const navEl=document.getElementById('nav');
+  const heroVideo=document.querySelector('.hero-video');
+  const heroVideoWrap=document.querySelector('.hero-video-wrap');
+  function openMenu(){
+    navEl.classList.add('open');
+    navToggle.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+    /* iOS fix: video en GPU ignora z-index, hay que ocultarlo */
+    if(heroVideo){heroVideo.pause();}
+    if(heroVideoWrap){heroVideoWrap.style.visibility='hidden';}
+  }
+  function closeMenu(){
+    navEl.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+    if(heroVideo){heroVideo.play();}
+    if(heroVideoWrap){heroVideoWrap.style.visibility='visible';}
+  }
   navToggle.addEventListener('click',()=>{
-    const isOpen=navEl.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded',isOpen);
-    document.body.style.overflow=isOpen?'hidden':'';
+    navEl.classList.contains('open')?closeMenu():openMenu();
   });
   document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.addEventListener('click',()=>{
-      navEl.classList.remove('open');
-      navToggle.setAttribute('aria-expanded','false');
-      document.body.style.overflow='';
-    });
+    a.addEventListener('click',closeMenu);
   });
   const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
