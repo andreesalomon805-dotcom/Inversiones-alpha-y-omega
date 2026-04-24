@@ -915,19 +915,22 @@
 
   /* ─── MOBILE NAV OVERLAY ─── */
   @media(max-width:900px){
+    /* Cursor no aplica en móvil */
+    .cursor-dot,.cursor-ring{display:none}
     .nav-links{
       position:fixed;inset:0;
       display:flex;flex-direction:column;
       align-items:center;justify-content:center;
       gap:4px;
-      background:rgba(8,8,8,.97);
-      backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
-      z-index:1001;list-style:none;padding:0;margin:0;
+      background:#030303;          /* sólido — sin alfa para que el video no traspase */
+      z-index:9998;list-style:none;padding:0;margin:0;
       opacity:0;visibility:hidden;transform:translateY(-10px);
       transition:opacity .35s ease,transform .35s ease,visibility .35s ease;
       pointer-events:none;
     }
     nav.open .nav-links{opacity:1;visibility:visible;transform:translateY(0);pointer-events:all}
+    /* Botón X por encima del overlay */
+    .nav-toggle{z-index:9999}
     .nav-links li{opacity:0;transform:translateY(18px);transition:opacity .3s ease,transform .3s ease}
     nav.open .nav-links li:nth-child(1){opacity:1;transform:none;transition-delay:.10s}
     nav.open .nav-links li:nth-child(2){opacity:1;transform:none;transition-delay:.16s}
@@ -939,10 +942,10 @@
     nav.open .nav-links li:nth-child(8){opacity:1;transform:none;transition-delay:.52s}
     .nav-links a{
       font-size:1.5rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
-      padding:14px 48px;color:rgba(255,255,255,.65);
+      padding:14px 48px;color:rgba(255,255,255,.88);
       display:block;text-align:center;
     }
-    .nav-links a:hover{color:var(--orange)}
+    .nav-links a:hover,.nav-links a:active{color:var(--orange)}
     .nav-links a::after{display:none}
     /* Hamburger → X when open */
     nav.open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--orange)}
