@@ -915,40 +915,42 @@
 
   /* ─── MOBILE NAV OVERLAY ─── */
   @media(max-width:900px){
-    /* Cursor no aplica en móvil */
     .cursor-dot,.cursor-ring{display:none}
-    .nav-links{
-      position:fixed;inset:0;
-      display:flex;flex-direction:column;
-      align-items:center;justify-content:center;
-      gap:4px;
-      background:#030303;          /* sólido — sin alfa para que el video no traspase */
-      isolation:isolate;           /* nuevo contexto de apilamiento */
-      z-index:9998;list-style:none;padding:0;margin:0;
-      opacity:0;visibility:hidden;transform:translateY(-10px);
-      transition:opacity .35s ease,transform .35s ease,visibility .35s ease;
-      pointer-events:none;
+    /* El nav MISMO se expande a pantalla completa — única forma de evitar
+       el bug de iOS donde el video GPU ignora z-index de elementos hijos */
+    nav{transition:background .25s ease}
+    nav.open{
+      bottom:0;
+      background:#030303;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:0;
+      backdrop-filter:none;-webkit-backdrop-filter:none;
     }
-    nav.open .nav-links{opacity:1;visibility:visible;transform:translateY(0);pointer-events:all}
-    /* Botón X por encima del overlay */
-    .nav-toggle{z-index:9999}
+    /* Logo arriba-izquierda, X arriba-derecha cuando abierto */
+    nav.open .nav-brand{position:absolute;top:22px;left:22px}
+    nav.open .nav-toggle{position:absolute;top:22px;right:22px}
+    /* Links: ocultos normalmente, flex-columna cuando open */
+    .nav-links{display:none;flex-direction:column;align-items:center;gap:0;list-style:none;padding:0;margin:0}
+    nav.open .nav-links{display:flex}
     .nav-links li{opacity:0;transform:translateY(18px);transition:opacity .3s ease,transform .3s ease}
-    nav.open .nav-links li:nth-child(1){opacity:1;transform:none;transition-delay:.10s}
-    nav.open .nav-links li:nth-child(2){opacity:1;transform:none;transition-delay:.16s}
-    nav.open .nav-links li:nth-child(3){opacity:1;transform:none;transition-delay:.22s}
-    nav.open .nav-links li:nth-child(4){opacity:1;transform:none;transition-delay:.28s}
-    nav.open .nav-links li:nth-child(5){opacity:1;transform:none;transition-delay:.34s}
-    nav.open .nav-links li:nth-child(6){opacity:1;transform:none;transition-delay:.40s}
-    nav.open .nav-links li:nth-child(7){opacity:1;transform:none;transition-delay:.46s}
-    nav.open .nav-links li:nth-child(8){opacity:1;transform:none;transition-delay:.52s}
+    nav.open .nav-links li:nth-child(1){opacity:1;transform:none;transition-delay:.08s}
+    nav.open .nav-links li:nth-child(2){opacity:1;transform:none;transition-delay:.14s}
+    nav.open .nav-links li:nth-child(3){opacity:1;transform:none;transition-delay:.20s}
+    nav.open .nav-links li:nth-child(4){opacity:1;transform:none;transition-delay:.26s}
+    nav.open .nav-links li:nth-child(5){opacity:1;transform:none;transition-delay:.32s}
+    nav.open .nav-links li:nth-child(6){opacity:1;transform:none;transition-delay:.38s}
+    nav.open .nav-links li:nth-child(7){opacity:1;transform:none;transition-delay:.44s}
+    nav.open .nav-links li:nth-child(8){opacity:1;transform:none;transition-delay:.50s}
     .nav-links a{
-      font-size:1.5rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
-      padding:14px 48px;color:rgba(255,255,255,.88);
+      font-size:1.45rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+      padding:13px 40px;color:rgba(255,255,255,.85);
       display:block;text-align:center;
     }
     .nav-links a:hover,.nav-links a:active{color:var(--orange)}
     .nav-links a::after{display:none}
-    /* Hamburger → X when open */
+    /* Hamburger → X cuando open */
     nav.open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--orange)}
     nav.open .nav-toggle span:nth-child(2){opacity:0;transform:scaleX(0)}
     nav.open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--orange)}
