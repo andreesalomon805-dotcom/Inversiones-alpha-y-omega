@@ -89,6 +89,11 @@
   .nav-links a:hover{color:var(--orange)}
   .nav-links a:hover::after{width:100%}
 
+  /* ─── HAMBURGER TOGGLE ─── */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:10px;z-index:1002;flex-shrink:0}
+  .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--white);transition:transform .35s ease,opacity .25s ease,background .3s ease}
+  .nav-toggle:hover span{background:var(--orange)}
+
   /* ═══ HERO ═══ */
   .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;perspective:1200px}
   .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(255,106,0,.08) 0%,transparent 70%),radial-gradient(ellipse 60% 50% at 80% 20%,rgba(255,140,51,.05) 0%,transparent 50%),var(--black)}
@@ -847,7 +852,7 @@
 
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:900px){
-    nav{padding:15px 25px}.nav-links{display:none}
+    nav{padding:15px 25px}.nav-toggle{display:flex}
     section,.brand-section{padding:80px 20px}
     .divisions-grid{grid-template-columns:1fr}
     .showcase-wrap{grid-template-columns:1fr;gap:40px}
@@ -907,6 +912,43 @@
     .hikvision,.nextcity,.testimonials,.epson-section,.dell-section,
     .brands-section,.about-section,.services-section,.clients-section{padding:60px 16px}
   }
+
+  /* ─── MOBILE NAV OVERLAY ─── */
+  @media(max-width:900px){
+    .nav-links{
+      position:fixed;inset:0;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      gap:4px;
+      background:rgba(8,8,8,.97);
+      backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+      z-index:1001;list-style:none;padding:0;margin:0;
+      opacity:0;visibility:hidden;transform:translateY(-10px);
+      transition:opacity .35s ease,transform .35s ease,visibility .35s ease;
+      pointer-events:none;
+    }
+    nav.open .nav-links{opacity:1;visibility:visible;transform:translateY(0);pointer-events:all}
+    .nav-links li{opacity:0;transform:translateY(18px);transition:opacity .3s ease,transform .3s ease}
+    nav.open .nav-links li:nth-child(1){opacity:1;transform:none;transition-delay:.10s}
+    nav.open .nav-links li:nth-child(2){opacity:1;transform:none;transition-delay:.16s}
+    nav.open .nav-links li:nth-child(3){opacity:1;transform:none;transition-delay:.22s}
+    nav.open .nav-links li:nth-child(4){opacity:1;transform:none;transition-delay:.28s}
+    nav.open .nav-links li:nth-child(5){opacity:1;transform:none;transition-delay:.34s}
+    nav.open .nav-links li:nth-child(6){opacity:1;transform:none;transition-delay:.40s}
+    nav.open .nav-links li:nth-child(7){opacity:1;transform:none;transition-delay:.46s}
+    nav.open .nav-links li:nth-child(8){opacity:1;transform:none;transition-delay:.52s}
+    .nav-links a{
+      font-size:1.5rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+      padding:14px 48px;color:rgba(255,255,255,.65);
+      display:block;text-align:center;
+    }
+    .nav-links a:hover{color:var(--orange)}
+    .nav-links a::after{display:none}
+    /* Hamburger → X when open */
+    nav.open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg);background:var(--orange)}
+    nav.open .nav-toggle span:nth-child(2){opacity:0;transform:scaleX(0)}
+    nav.open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);background:var(--orange)}
+  }
 </style>
 </head>
 <body>
@@ -942,6 +984,11 @@
     <li><a href="#iluminacion">Iluminación</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- ═══ HERO ═══ -->
@@ -3786,6 +3833,22 @@
   const container=document.getElementById('particles');
   for(let i=0;i<30;i++){const p=document.createElement('div');p.classList.add('particle');p.style.left=Math.random()*100+'%';p.style.animationDelay=Math.random()*8+'s';p.style.animationDuration=(6+Math.random()*6)+'s';container.appendChild(p)}
   window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80)});
+
+  /* ─── HAMBURGER MENU ─── */
+  const navToggle=document.getElementById('navToggle');
+  const navEl=document.getElementById('nav');
+  navToggle.addEventListener('click',()=>{
+    const isOpen=navEl.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded',isOpen);
+    document.body.style.overflow=isOpen?'hidden':'';
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      navEl.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+      document.body.style.overflow='';
+    });
+  });
   const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   document.querySelectorAll('.product-card').forEach(card=>{
