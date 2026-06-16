@@ -463,6 +463,31 @@
   .hik-specs{display:flex;flex-wrap:wrap;gap:5px}
   .hik-spec{padding:3px 8px;font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.4)}
   .hik-spec.spec-highlight{border-color:rgba(255,106,0,.25);color:rgba(255,106,0,.7)}
+
+  /* ═══ ENERGÍA SOLAR ═══ */
+  .solar-section{background:var(--black);padding:120px 60px;position:relative;overflow:hidden}
+  .solar-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,158,11,.3),transparent)}
+  .solar-badge{display:inline-flex;align-items:center;gap:10px;padding:7px 18px;border:1px solid rgba(245,158,11,.25);background:rgba(245,158,11,.06);border-radius:2px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,195,50,.8);margin-bottom:16px;font-weight:600}
+  .solar-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 auto 40px;max-width:1300px;padding-bottom:20px;border-bottom:1px solid rgba(245,158,11,.08)}
+  .solar-tab{padding:8px 20px;background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.12);color:var(--gray);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .25s ease}
+  .solar-tab:hover,.solar-tab.active{background:rgba(245,158,11,.85);color:#000;border-color:rgba(245,158,11,.85)}
+  .solar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;max-width:1300px;margin:0 auto}
+  .solar-card{background:rgba(10,8,0,.95);border:1px solid rgba(245,158,11,.08);overflow:hidden;cursor:pointer;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative}
+  .solar-card:hover{border-color:rgba(245,158,11,.35);transform:translateY(-4px);box-shadow:0 20px 60px rgba(245,158,11,.08)}
+  .solar-card[data-hidden]{display:none}
+  .solar-card-video{width:100%;height:200px;overflow:hidden;background:#060400;position:relative}
+  .solar-card-video video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .solar-card:hover .solar-card-video video{transform:scale(1.03)}
+  .solar-play-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .3s}
+  .solar-play-icon svg{width:44px;height:44px;opacity:.75}
+  .solar-card:hover .solar-play-icon{opacity:0}
+  .solar-card-body{padding:18px 20px 20px}
+  .solar-card-cat{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,158,11,.7);font-weight:600;margin-bottom:6px}
+  .solar-card-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:8px;line-height:1.3}
+  .solar-card-desc{font-size:.8rem;color:var(--gray);line-height:1.6;margin-bottom:12px}
+  .solar-specs{display:flex;flex-wrap:wrap;gap:5px}
+  .solar-spec{font-size:.6rem;padding:4px 10px;border:1px solid rgba(245,158,11,.18);color:rgba(245,158,11,.65);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+
   @keyframes hikFadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
   /* ═══ NEXTCITY LABS ═══ */
@@ -897,7 +922,7 @@
     /* Gradient fades no tan anchas en tablets */
     .clients-marquee-wrap::before,.clients-marquee-wrap::after{width:80px}
     /* Grids de producto: 2 columnas iguales */
-    .hik-grid,.epson-grid,.dell-grid,.agua-grid,.sw-grid{grid-template-columns:repeat(2,1fr)}
+    .hik-grid,.epson-grid,.dell-grid,.agua-grid,.sw-grid,.solar-grid{grid-template-columns:repeat(2,1fr)}
     .nc-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media(max-width:600px){
@@ -997,6 +1022,9 @@
     nav.open .nav-links li:nth-child(6){opacity:1;transform:none;transition-delay:.38s}
     nav.open .nav-links li:nth-child(7){opacity:1;transform:none;transition-delay:.44s}
     nav.open .nav-links li:nth-child(8){opacity:1;transform:none;transition-delay:.50s}
+    nav.open .nav-links li:nth-child(9){opacity:1;transform:none;transition-delay:.56s}
+    nav.open .nav-links li:nth-child(10){opacity:1;transform:none;transition-delay:.62s}
+    nav.open .nav-links li:nth-child(11){opacity:1;transform:none;transition-delay:.68s}
     .nav-links a{
       font-size:1.45rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
       padding:13px 40px;color:rgba(255,255,255,.85);
@@ -1043,6 +1071,7 @@
     <li><a href="#epson">EPSON</a></li>
     <li><a href="#iluminacion">Iluminación</a></li>
     <li><a href="#agua">Agua</a></li>
+    <li><a href="#solar">Solar</a></li>
     <li><a href="#software">Software</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -1118,6 +1147,10 @@
     <div class="div-card reveal reveal-delay-8" data-href="#agua"><div class="div-inner">
       <div class="div-front"><div><div class="div-front-num">08</div><div class="div-front-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6 2 2 8.5 2 13a10 10 0 0 0 20 0c0-4.5-4-11-10-11z" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 18c-2.2 0-4-1.8-4-4 0-1.6 1-3.2 2.5-4.5" stroke-linecap="round"/></svg></div><h3>División Agua</h3><p>Potabilización, desalinización y tratamiento de aguas. Representantes exclusivos de Smart Eco Water Group para Honduras.</p></div><div class="div-front-arrow">↗</div></div>
       <div class="div-back"><h3>División Agua</h3><div class="brand"><div class="brand-name">Smart Eco Water Group — Desalinización</div><div class="brand-products">OI-10 (10 m³/día) · OI-20H (20 m³/día) · OI-30 · OI-50 · OI-100 (100 m³/día) · Eficiencia hasta 97,8% · Ósmosis Inversa</div></div><div class="brand"><div class="brand-name">Tratamiento de Aguas Residuales</div><div class="brand-products">Sistemas de depuración · Aguas grises y negras · Reciclaje para riego e industria · Cero residuos</div></div><div class="brand"><div class="brand-name">Sectores Atendidos</div><div class="brand-products">Municipal · Hoteles & Resorts · Hospitales · Industria · Comunidades rurales · Agricultura · Plataformas offshore</div></div><div class="brand"><div class="brand-name">Ventajas Clave</div><div class="brand-products">100% ecológico sin químicos · 60% menos consumo energético · Compatible energía solar · Control remoto 24/7 · Garantía hasta 15 años</div></div></div>
+    </div></div>
+    <div class="div-card reveal" data-href="#solar"><div class="div-inner">
+      <div class="div-front"><div><div class="div-front-num">09</div><div class="div-front-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke-linecap="round"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>División Solar</h3><p>Sistemas fotovoltaicos AIO, tejas solares, vidrios solares y paneles de alta eficiencia para hogares y empresas.</p></div><div class="div-front-arrow">↗</div></div>
+      <div class="div-back"><h3>División Solar</h3><div class="brand"><div class="brand-name">Sistemas AIO</div><div class="brand-products">AIO · AIO Híbrida · AIO MINI — Todo integrado: paneles + batería + inversor</div></div><div class="brand"><div class="brand-name">Integración Arquitectónica</div><div class="brand-products">Tejas Solares · Vidrios Solares — Generación integrada en la estructura del edificio</div></div><div class="brand"><div class="brand-name">Paneles</div><div class="brand-products">LENA 2 — Paneles fotovoltaicos de alta eficiencia para instalaciones residenciales e industriales</div></div></div>
     </div></div>
   </div>
 </section>
@@ -3535,6 +3568,141 @@
   </div>
 </section>
 
+
+<div class="glow-divider"></div>
+
+<!-- ═══ ENERGÍA SOLAR ═══ -->
+<section class="solar-section" id="solar">
+  <div style="text-align:center;max-width:760px;margin:0 auto 60px">
+    <div class="solar-badge reveal">&#9670; Soluciones de Energía Solar &#9670;</div>
+    <div class="section-label reveal" style="justify-content:center;margin-top:8px">División 09 — Energía Solar</div>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center">Energía <span style="color:#f59e0b">Solar</span></h2>
+    <p class="section-desc reveal reveal-delay-2">Sistemas fotovoltaicos de última generación para hogares, empresas y proyectos industriales. Tecnología solar integrada en estructuras arquitectónicas — tejas, vidrios y paneles de alta eficiencia.</p>
+  </div>
+
+  <div class="solar-tabs" id="solarTabs">
+    <button class="solar-tab active" data-sfil="all">Todos</button>
+    <button class="solar-tab" data-sfil="aio">Sistemas AIO</button>
+    <button class="solar-tab" data-sfil="arch">Integración Arquitectónica</button>
+    <button class="solar-tab" data-sfil="panel">Paneles</button>
+  </div>
+
+  <div class="solar-grid" id="solarGrid">
+
+    <!-- ── AIO ── -->
+    <div class="solar-card reveal" data-scat="aio">
+      <div class="solar-card-video">
+        <video src="solar/aio.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="solar-play-icon"><svg viewBox="0 0 24 24" fill="rgba(245,158,11,.9)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="solar-card-body">
+        <div class="solar-card-cat">Almacenamiento · AIO</div>
+        <div class="solar-card-name">Sistema AIO</div>
+        <div class="solar-card-desc">Sistema todo-en-uno que integra paneles fotovoltaicos, batería de litio e inversor en una sola unidad. Instalación rápida y monitoreo remoto incluido.</div>
+        <div class="solar-specs"><span class="solar-spec">TODO EN UNO</span><span class="solar-spec">LITIO</span><span class="solar-spec">INVERSOR</span></div>
+      </div>
+    </div>
+
+    <div class="solar-card reveal reveal-delay-1" data-scat="aio">
+      <div class="solar-card-video">
+        <video src="solar/aio-hibrida.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="solar-play-icon"><svg viewBox="0 0 24 24" fill="rgba(245,158,11,.9)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="solar-card-body">
+        <div class="solar-card-cat">Almacenamiento · AIO Híbrida</div>
+        <div class="solar-card-name">AIO Híbrida</div>
+        <div class="solar-card-desc">Versión híbrida que combina generación solar con conexión a la red eléctrica. Garantiza suministro continuo incluso sin sol, con gestión inteligente de energía.</div>
+        <div class="solar-specs"><span class="solar-spec">HÍBRIDO</span><span class="solar-spec">RED + SOLAR</span><span class="solar-spec">24/7</span></div>
+      </div>
+    </div>
+
+    <div class="solar-card reveal reveal-delay-2" data-scat="aio">
+      <div class="solar-card-video">
+        <video src="solar/aio-mini-02.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="solar-play-icon"><svg viewBox="0 0 24 24" fill="rgba(245,158,11,.9)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="solar-card-body">
+        <div class="solar-card-cat">Almacenamiento · AIO MINI</div>
+        <div class="solar-card-name">AIO MINI — Vista A</div>
+        <div class="solar-card-desc">Versión compacta del AIO ideal para hogares y pequeños comercios. Diseño minimalista con alto rendimiento energético y fácil instalación en espacios reducidos.</div>
+        <div class="solar-specs"><span class="solar-spec">COMPACTO</span><span class="solar-spec">RESIDENCIAL</span><span class="solar-spec">PLUG & PLAY</span></div>
+      </div>
+    </div>
+
+    <div class="solar-card reveal" data-scat="aio">
+      <div class="solar-card-video">
+        <video src="solar/aio-mini-04.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="solar-play-icon"><svg viewBox="0 0 24 24" fill="rgba(245,158,11,.9)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="solar-card-body">
+        <div class="solar-card-cat">Almacenamiento · AIO MINI</div>
+        <div class="solar-card-name">AIO MINI — Vista B</div>
+        <div class="solar-card-desc">Vista de instalación y dimensiones del AIO MINI. Sistema ultracompacto con conectividad WiFi/Bluetooth para monitoreo desde smartphone sin costo adicional.</div>
+        <div class="solar-specs"><span class="solar-spec">WIFI</span><span class="solar-spec">APP MÓVIL</span><span class="solar-spec">ULTRA COMPACT</span></div>
+      </div>
+    </div>
+
+    <!-- ── PANEL ── -->
+    <div class="solar-card reveal reveal-delay-1" data-scat="panel">
+      <div class="solar-card-video">
+        <video src="solar/lena2.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="solar-play-icon"><svg viewBox="0 0 24 24" fill="rgba(245,158,11,.9)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="solar-card-body">
+        <div class="solar-card-cat">Paneles · 2ª Generación</div>
+        <div class="solar-card-name">Panel LENA 2</div>
+        <div class="solar-card-desc">Panel fotovoltaico de segunda generación con eficiencia superior. Diseño de bajo perfil, resistente a condiciones climáticas extremas tropicales. Ideal para instalaciones residenciales e industriales.</div>
+        <div class="solar-specs"><span class="solar-spec">ALTA EFIC.</span><span class="solar-spec">TROPICAL</span><span class="solar-spec">25 AÑOS</span></div>
+      </div>
+    </div>
+
+    <!-- ── ARQUITECTÓNICA ── -->
+    <div class="solar-card reveal reveal-delay-2" data-scat="arch">
+      <div class="solar-card-video">
+        <video src="solar/tejas.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="solar-play-icon"><svg viewBox="0 0 24 24" fill="rgba(245,158,11,.9)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="solar-card-body">
+        <div class="solar-card-cat">Integración Arquitectónica · Techo</div>
+        <div class="solar-card-name">Tejas Solares</div>
+        <div class="solar-card-desc">Tejas fotovoltaicas que reemplazan al techo tradicional generando electricidad. Estética premium, durabilidad superior a 30 años e integración perfecta con la arquitectura del inmueble.</div>
+        <div class="solar-specs"><span class="solar-spec">ARQUITECTÓNICO</span><span class="solar-spec">30 AÑOS</span><span class="solar-spec">PREMIUM</span></div>
+      </div>
+    </div>
+
+    <div class="solar-card reveal" data-scat="arch">
+      <div class="solar-card-video">
+        <video src="solar/vidrios-02.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="solar-play-icon"><svg viewBox="0 0 24 24" fill="rgba(245,158,11,.9)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="solar-card-body">
+        <div class="solar-card-cat">Integración Arquitectónica · Fachada</div>
+        <div class="solar-card-name">Vidrios Solares — Vista A</div>
+        <div class="solar-card-desc">Vidrios fotovoltaicos para ventanas y fachadas que generan electricidad con luz natural. Transparencia regulable, protección UV y aislamiento térmico incluido. Ideal para edificios corporativos.</div>
+        <div class="solar-specs"><span class="solar-spec">FACHADA</span><span class="solar-spec">TRANSPARENTE</span><span class="solar-spec">UV BLOCK</span></div>
+      </div>
+    </div>
+
+    <div class="solar-card reveal reveal-delay-1" data-scat="arch">
+      <div class="solar-card-video">
+        <video src="solar/vidrios-03.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="solar-play-icon"><svg viewBox="0 0 24 24" fill="rgba(245,158,11,.9)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+      </div>
+      <div class="solar-card-body">
+        <div class="solar-card-cat">Integración Arquitectónica · Fachada</div>
+        <div class="solar-card-name">Vidrios Solares — Vista B</div>
+        <div class="solar-card-desc">Vista complementaria de la tecnología de vidrio solar. Solución ideal para rascacielos, oficinas y viviendas modernas donde la estética y la sostenibilidad van de la mano.</div>
+        <div class="solar-specs"><span class="solar-spec">EDIFICIOS</span><span class="solar-spec">SOSTENIBLE</span><span class="solar-spec">DISEÑO</span></div>
+      </div>
+    </div>
+
+  </div><!-- /solar-grid -->
+
+  <div style="text-align:center;margin-top:60px">
+    <a href="https://wa.me/50489910363?text=Hola%2C%20me%20interesa%20información%20sobre%20soluciones%20de%20energía%20solar" target="_blank" class="btn reveal">Solicitar Información &rarr;</a>
+  </div>
+</section>
+
 <div class="glow-divider"></div>
 
 <!-- ═══ SOFTWARE A LA MEDIDA ═══ -->
@@ -4269,6 +4437,28 @@
       card.style.transform=`translateY(-5px) rotateY(${x*6}deg) rotateX(${-y*6}deg)`;
     });
     card.addEventListener('mouseleave',()=>{card.style.transform='translateY(0) rotateY(0) rotateX(0)'});
+  });
+
+
+  /* ─── SOLAR FILTER TABS ─── */
+  document.querySelectorAll('#solarTabs .solar-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('#solarTabs .solar-tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter=tab.dataset.sfil;
+      document.querySelectorAll('#solarGrid .solar-card').forEach(card=>{
+        const show=filter==='all'||card.dataset.scat===filter;
+        if(show){card.removeAttribute('data-hidden');card.style.animation='hikFadeIn .4s ease forwards'}
+        else card.setAttribute('data-hidden','');
+      });
+    });
+  });
+  /* ─── SOLAR VIDEO HOVER PLAY ─── */
+  document.querySelectorAll('.solar-card').forEach(card=>{
+    const vid=card.querySelector('video');
+    if(!vid) return;
+    card.addEventListener('mouseenter',()=>vid.play().catch(()=>{}));
+    card.addEventListener('mouseleave',()=>{vid.pause();vid.currentTime=0;});
   });
 
   /* ─── AGUA FILTER TABS ─── */
